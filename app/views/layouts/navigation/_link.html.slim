@@ -1,0 +1,29 @@
+- default_params = { class: %w[nav-link link-dark] }
+- link_method ||= nil
+
+- if active?(path)
+  = link_to text,
+    path,
+    **default_params.merge({ \
+      class: %w[nav-link active] \
+    })
+
+- elsif link_method
+  - if link_method == :delete
+    = link_to text,
+      path,
+      **default_params.merge({ \
+        method: :delete, \
+        data: { \
+          turbo_method: :delete \
+        } \
+      })
+  - else
+    = link_to text,
+      path,
+      **default_params.merge({ \
+        method: link_method \
+      })
+
+- else
+  = link_to text, path, **default_params
