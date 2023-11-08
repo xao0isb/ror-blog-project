@@ -97,4 +97,9 @@ make lint
 - Sentry - трекинг ошибок и производительности в продакшене.
 
 ## CI/CD
-Используется GitHub Actions - [workflow](https://github.com/xao0isb/ror-blog-project/tree/main/.github/workflows/main.yml).
+CI - используется GitHub Actions - [workflow](https://github.com/xao0isb/ror-blog-project/tree/main/.github/workflows/main.yml).
+CD - используется railway.
+
+## Sentry
+
+Для трекинга оишбок и производительности в продакшене используется sentry.
