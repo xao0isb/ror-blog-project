@@ -3,25 +3,27 @@
 require 'test_helper'
 
 module PostsControllerTest
-  class RedirectIfAccessDenied < ActionDispatch::IntegrationTest
-    setup do
-      @post = posts :one
-    end
+  module RedirectIfAccessDenied
+    class IfUserNotLoggedIn < ActionDispatch::IntegrationTest
+      setup do
+        @post = posts :one
+      end
 
-    test 'new should redirect to sign in' do
-      test_redirect_to_sign_in { get new_post_url }
-    end
+      test 'new should redirect to sign in' do
+        test_redirect_to_sign_in { get new_post_url }
+      end
 
-    test 'create should redirect to sign in' do
-      test_redirect_to_sign_in { post posts_url }
-    end
+      test 'create should redirect to sign in' do
+        test_redirect_to_sign_in { post posts_url }
+      end
 
-    test 'edit should redirect to sign in' do
-      test_redirect_to_sign_in { get edit_post_url(@post) }
-    end
+      test 'edit should redirect to sign in' do
+        test_redirect_to_sign_in { get edit_post_url(@post) }
+      end
 
-    test 'update should redirect to sign in' do
-      test_redirect_to_sign_in { patch post_url(@post) }
+      test 'update should redirect to sign in' do
+        test_redirect_to_sign_in { patch post_url(@post) }
+      end
     end
   end
 

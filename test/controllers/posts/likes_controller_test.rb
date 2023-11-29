@@ -34,7 +34,7 @@ module LikesControllerTest
   end
 
   class RedirectIfAccessDenied < ActionDispatch::IntegrationTest
-    test 'create should redirect to sign in' do
+    test 'create should redirect to sign in if user is not logged in' do
       test_redirect_to_sign_in { post post_likes_path(posts(:one)) }
     end
   end
