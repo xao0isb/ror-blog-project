@@ -1,0 +1,19 @@
+ru:
+  views:
+    posts:
+      new:
+        title: Новая статья
+      show:
+        tags_root: Все статьи
+        likes_count: Понравилось %{count}
+        links:
+          edit: Отредактировать
+          destroy: Удалить
+        comments:
+          title: Комментарий
+          reply_buttons:
+            unauthorized:
+              text: Requires
+              link_text: Sign in
+      edit:
+        title: Редактирование статьи

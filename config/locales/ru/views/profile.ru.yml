@@ -1,0 +1,11 @@
+ru:
+  views:
+    profile:
+      show:
+        title: Профиль
+        created_at: Присоединился
+        links:
+          edit: Обновить информацию
+          destroy: Удалить профиль
+      edit:
+        title: Обновить профиль    

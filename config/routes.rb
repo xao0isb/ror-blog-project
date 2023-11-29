@@ -3,12 +3,18 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :posts, only: %i[show new create] do
+  devise_for :users
+
+  resource :profile, only: :show
+
+  namespace 'my' do
+    resource :posts, only: :show
+  end
+
+  resources :posts, except: :index do
     scope module: :posts do
       resources :likes, only: %i[create destroy]
       resources :comments, only: :create
     end
   end
-
-  devise_for :users
 end

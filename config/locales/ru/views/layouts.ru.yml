@@ -1,0 +1,11 @@
+ru:
+  views:
+    layouts:
+      navigation:
+        links:
+          sign_in: Вход
+          sign_up: Регистрация
+          new_post: Добавить статью
+          my_posts: Мои статьи
+          profile: Профиль
+          sign_out: Выйти

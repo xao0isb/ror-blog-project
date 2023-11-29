@@ -4,14 +4,18 @@ ru:
       text: обязательное
       mark: '*'
     hints:
-      new:
-        password:
-          many: (минимум %{count} знаков)
+      min_length:
+        many: (минимум %{count} знаков)
+      leave_field: Оставьте поле пустым, если не хотите его изменять
+      require_current_password_to_confirm: Нам нужен ваш текущий пароль, чтобы подтвердить изменения
     submit_buttons:
       sign_up: Регистрация
       sign_in: Вход
+      profile:
+        edit: Обновить профиль
       post:
         new: Создать статью
+        edit: Обновить
         comment:
           new: Создать комментарий
       # You can uncomment the line below if you need to overwrite the whole required html.

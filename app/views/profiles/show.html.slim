@@ -1,0 +1,17 @@
+h1.h2.mb-4 = t('views.profile.show.title')
+
+p
+  b Email:
+  span = current_user.email
+  br
+  b = "#{t('views.profile.show.created_at')}: "
+  span = current_user.created_at.to_date.strftime('%d.%m.%Y')
+
+.d-flex.gap-2
+  = link_to t('views.profile.show.links.edit'),
+            edit_user_registration_path,
+            class: 'btn border border-2 d-block'
+  = link_to t('views.profile.show.links.destroy'),
+            user_registration_path,
+            method: :delete,
+            class: 'btn btn-danger ml-2 d-block'

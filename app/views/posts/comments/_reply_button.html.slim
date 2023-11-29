@@ -4,7 +4,7 @@ div class=custom_class
   - comment_id = comment.id
 
   a.small.text-muted data-bs-toggle='collapse' href="#new_post_comment-#{comment_id}"
-    = t('reply')
+    = t('views.general.buttons.reply')
 
   .collapse data-bs-target="new_post_comment-#{comment_id}" id="new_post_comment-#{comment_id}"
     - if current_user.present?
@@ -16,5 +16,5 @@ div class=custom_class
       )
     - else
       span
-        => t('pages.posts.comments.reply_button.unauthorized.text_html')
-        = link_to t('pages.posts.comments.reply_button.unauthorized.link_text'), new_user_session_path
+        => t('views.posts.show.comments.reply_buttons.unauthorized.text')
+        = link_to t('views.posts.show.comments.reply_buttons.unauthorized.link_text'), new_user_session_path

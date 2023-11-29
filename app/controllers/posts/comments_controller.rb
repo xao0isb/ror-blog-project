@@ -9,9 +9,9 @@ module Posts
       @comment.user = current_user
 
       if @comment.save
-        redirect_to resource_post, notice: t('.')
+        redirect_to resource_post, notice: t('controllers.posts.comments.actions.update.notifications.success')
       else
-        flash[:alert] = "#{t(:text, scope: 'posts.comments')} #{@comment.errors.messages[:content].first}"
+        flash[:alert] = "#{t('controllers.posts.comments.actions.updated.notifications.failure_text')} #{@comment.errors.messages[:content].first}"
 
         redirect_to resource_post, status: :unprocessable_entity
       end

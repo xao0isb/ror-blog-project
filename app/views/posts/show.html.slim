@@ -1,10 +1,20 @@
 ol.breadcrumb
-  li.breadcrumb-item = link_to t('pages.posts.show.tags.root'), root_path
+  li.breadcrumb-item = link_to t('views.posts.show.tags_root'), root_path
   li.breadcrumb-item.active
     = @post.category.name
 
 article.mt-4
-  h1.mb-lg-5 = @post.title
+  .d-flex.align-items-center.gap-2.mb-lg-5
+    h1.me-4 = @post.title
+
+    - if @post.creator == current_user
+      = link_to t('views.posts.show.links.edit'), edit_post_url(@post), class: 'btn btn-primary'
+      = link_to t('views.posts.show.links.destroy'),
+                post_url(@post),
+                method: :delete,
+                data: { turbo_method: :delete },
+                class: 'btn btn-danger'
+
   = simple_format @post.body
 
   div class='d-flex justify-content-between mt-5'
@@ -14,7 +24,7 @@ article.mt-4
     div = render 'posts/likes/button', post: @post, like: @user_like
 
 div
-  p.lead.mb-3 = t(:text, scope: 'pages.posts.comments')
+  p.lead.mb-3 = t('views.posts.show.comments.title')
 
   - if current_user.present?
     = render( \

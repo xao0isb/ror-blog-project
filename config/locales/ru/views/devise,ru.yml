@@ -1,0 +1,11 @@
+ru:
+  views:
+    devise:
+      registrations:
+        new:
+          title: Регистрация
+        edit:
+          title: Изменить информацию
+      sessions:
+        new:
+          title: Вход

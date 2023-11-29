@@ -1,4 +1,4 @@
 with_nested:
-  content: Content content
+  content: Comment content
   post: one
   user: current_user

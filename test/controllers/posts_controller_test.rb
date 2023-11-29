@@ -3,6 +3,28 @@
 require 'test_helper'
 
 module PostsControllerTest
+  class RedirectIfAccessDenied < ActionDispatch::IntegrationTest
+    setup do
+      @post = posts :one
+    end
+
+    test 'new should redirect to sign in' do
+      test_redirect_to_sign_in { get new_post_url }
+    end
+
+    test 'create should redirect to sign in' do
+      test_redirect_to_sign_in { post posts_url }
+    end
+
+    test 'edit should redirect to sign in' do
+      test_redirect_to_sign_in { get edit_post_url(@post) }
+    end
+
+    test 'update should redirect to sign in' do
+      test_redirect_to_sign_in { patch post_url(@post) }
+    end
+  end
+
   class Actions < ActionDispatch::IntegrationTest
     include Devise::Test::IntegrationHelpers
 
@@ -12,10 +34,15 @@ module PostsControllerTest
 
       @post = posts :one
 
-      @attrs = {
+      @params = {
         title: Faker::Lorem.sentence,
         body: Faker::Lorem.characters(number: 100),
         category_id: categories(:one).id
+      }
+      @invalid_params = {
+        title: nil,
+        body: nil,
+        category_id: nil
       }
     end
 
@@ -25,26 +52,18 @@ module PostsControllerTest
     end
 
     test 'should create post' do
-      post posts_url, params: { post: @attrs }
+      post posts_url, params: { post: @params }
 
-      post = Post.find_by @attrs.merge({
-                                         creator: @current_user
-                                       })
+      post = Post.find_by @params.merge({ creator: @current_user })
 
       assert { post }
       assert_redirected_to root_url
     end
 
     test 'should not create post due to validation' do
-      wrong_attrs = {
-        title: nil,
-        body: nil,
-        category_id: nil
-      }
+      post posts_url, params: { post: @invalid_params }
 
-      post posts_url, params: { post: wrong_attrs }
-
-      post = Post.find_by wrong_attrs
+      post = Post.find_by @invalid_params
 
       assert { post.nil? }
       assert_response :unprocessable_entity
@@ -54,15 +73,30 @@ module PostsControllerTest
       get post_url(@post)
       assert_response :success
     end
-  end
 
-  class RedirectIfAccessDenied < ActionDispatch::IntegrationTest
-    test 'new should redirect to sign in' do
-      test_redirect_to_sign_in { get new_post_url }
+    test 'should get edit' do
+      get edit_post_url(@post)
+      assert_response :success
     end
 
-    test 'create should redirect to sign in' do
-      test_redirect_to_sign_in { post posts_url }
+    test 'should update post' do
+      patch post_url(@post), params: { post: @params }
+
+      assert_redirected_to post_url(@post)
+
+      @post.reload
+      @params.each do |param|
+        key = param.first
+        value = param.second
+
+        assert_equal value, @post[key]
+      end
+    end
+
+    test 'should not update post due to validation' do
+      patch post_url(@post), params: { post: @invalid_params }
+
+      assert_response :unprocessable_entity
     end
   end
 end

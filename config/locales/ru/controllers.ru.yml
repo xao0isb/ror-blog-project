@@ -1,0 +1,19 @@
+ru:
+  controllers:
+    posts:
+      actions:
+        create:
+          notifications:
+            success: Статья успешно добавлена
+        update:
+          notifications:
+            success: Статья успешно обновлена
+        destroy:
+          notifications:
+            success: Статья успешно удалена
+      comments:
+        actions:
+          create:
+            notifications:
+              success: Комментарий успешно добавлен
+              failure_text: Комментарий

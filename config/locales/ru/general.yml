@@ -1,0 +1,6 @@
+ru:
+  views:
+    general:
+      buttons:
+        get_back: 'Вернуться'
+        reply: 'Ответить'

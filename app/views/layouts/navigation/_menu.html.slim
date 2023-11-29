@@ -3,20 +3,28 @@ nav class='navbar justify-content-end py-3 border-bottom'
     - if current_user.present?
       li.nav-item.ms-2
         = render 'layouts/navigation/link',
-          text: t(:new_post, scope: 'pages.navigation.links'),
+          text: t('views.layouts.navigation.links.new_post'),
           path: new_post_path
       li.nav-item.ms-2
         = render 'layouts/navigation/link',
-          text: t(:sign_out, scope: 'pages.navigation.links'),
+          text: t('views.layouts.navigation.links.my_posts'),
+          path: my_posts_path
+      li.nav-item.ms-2
+        = render 'layouts/navigation/link',
+          text: t('views.layouts.navigation.links.profile'),
+          path: profile_path
+      li.nav-item.ms-2
+        = render 'layouts/navigation/link',
+          text: t('views.layouts.navigation.links.sign_out'),
           path: destroy_user_session_path,
           link_method: :delete
 
     - else
       li.nav-item.ms-2
         = render 'layouts/navigation/link',
-          text: t(:sign_in, scope: 'pages.navigation.links'),
+          text: t('views.layouts.navigation.links.sign_in'),
           path: new_user_session_path
       li.nav-item.ms-2
         = render 'layouts/navigation/link',
-          text: t(:sign_up, scope: 'pages.navigation.links'),
+          text: t('views.layouts.navigation.links.sign_up'),
           path: new_user_registration_path
