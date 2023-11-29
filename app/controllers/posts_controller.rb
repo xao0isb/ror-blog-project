@@ -15,6 +15,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def edit
+    @post = find_post
+  end
+
   def create
     @post = current_user.posts.build post_params
 
@@ -23,10 +27,6 @@ class PostsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @post = find_post
   end
 
   def update
