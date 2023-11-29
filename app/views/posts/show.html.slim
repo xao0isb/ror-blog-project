@@ -3,17 +3,17 @@ ol.breadcrumb
   li.breadcrumb-item.active
     = @post.category.name
 
-article.mt-4
-  .d-flex.align-items-center.gap-2.mb-lg-5
-    h1.me-4 = @post.title
+- if @post.creator == current_user
+  .d-flex.gap-2
+    = link_to t('views.posts.show.links.edit'), edit_post_url(@post), class: 'btn btn-primary'
+    = link_to t('views.posts.show.links.destroy'),
+              post_url(@post),
+              method: :delete,
+              data: { turbo_method: :delete },
+              class: 'btn btn-danger'
 
-    - if @post.creator == current_user
-      = link_to t('views.posts.show.links.edit'), edit_post_url(@post), class: 'btn btn-primary'
-      = link_to t('views.posts.show.links.destroy'),
-                post_url(@post),
-                method: :delete,
-                data: { turbo_method: :delete },
-                class: 'btn btn-danger'
+article.mt-4
+  h1.me-4 = @post.title
 
   = simple_format @post.body
 
