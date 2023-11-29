@@ -34,16 +34,19 @@ make lint
 ## Принцип работы:
 Веб-приложение блога. Возможности:
 - Регистрация, авторизация, выход из системы;
-- Создание поста;
+- Изменение, удаление аккаунта.
+- Создание, изменение, удаление поста;
 - Возможность поставить лайк посту;
 - Возможность оставить комментарий посту;
 - Возможность оставить комментарий к комментарию.
 
 ### [Контроллеры](https://github.com/xao0isb/ror-blog-project/tree/main/app/controllers):
 - [HomeController *(index)*](https://github.com/xao0isb/ror-blog-project/tree/main/app/controllers/home_controller.rb)
-- [PostsController *(show, new, create)*](https://github.com/xao0isb/ror-blog-project/tree/main/app/controllers/posts_controller.rb):
+- [ProfilesController *(show)*](https://github.com/xao0isb/ror-blog-project/tree/main/app/controllers/profiles_controller.rb)
+- [PostsController *(show, new, create, edit, update, destroy)*](https://github.com/xao0isb/ror-blog-project/tree/main/app/controllers/posts_controller.rb):
     - [CommentsController *(create)*](https://github.com/xao0isb/ror-blog-project/tree/main/app/controllers/posts/comments_controller.rb)
     - [LikesController *(create, destroy)*](https://github.com/xao0isb/ror-blog-project/tree/main/app/controllers/posts/likes_controller.rb)
+- [MyPostsController *(show)*](https://github.com/xao0isb/ror-blog-project/tree/main/app/controllers/my/posts_controller.rb)
 
 ### [Модели](https://github.com/xao0isb/ror-blog-project/tree/main/app/models):
 - [User](https://github.com/xao0isb/ror-blog-project/tree/main/app/models/user.rb), связи:
@@ -60,18 +63,22 @@ make lint
 
 ### [Представления](https://github.com/xao0isb/ror-blog-project/tree/main/app/views):
 - [home](https://github.com/xao0isb/ror-blog-project/tree/main/app/views/home)
+- [profiles](https://github.com/xao0isb/ror-blog-project/tree/main/app/views/profiles)
 - [posts](https://github.com/xao0isb/ror-blog-project/tree/main/app/views/posts):
     - [likes](https://github.com/xao0isb/ror-blog-project/tree/main/app/views/posts/likes)
     - [comments](https://github.com/xao0isb/ror-blog-project/tree/main/app/views/posts/comments)
+- [my posts](https://github.com/xao0isb/ror-blog-project/tree/main/app/views/my/posts):
 - [devise](https://github.com/xao0isb/ror-blog-project/tree/main/app/views/devise) (представления регистрации и авторизации)
 - [layouts](https://github.com/xao0isb/ror-blog-project/tree/main/app/views/layouts) (общие части представлений)
 
 ### [Тесты](https://github.com/xao0isb/ror-blog-project/tree/main/test):
 - [Контроллеры](https://github.com/xao0isb/ror-blog-project/tree/main/test/controllers):
     - [HomeControllerTest](https://github.com/xao0isb/ror-blog-project/tree/main/test/controllers/home_controller_test.rb)
-    - [PostControllerTest](https://github.com/xao0isb/ror-blog-project/tree/main/test/controllers/posts_controller_test.rb):
+    - [ProfilesControllerTest](https://github.com/xao0isb/ror-blog-project/tree/main/test/controllers/profiles_controller_test.rb)
+    - [PostsControllerTest](https://github.com/xao0isb/ror-blog-project/tree/main/test/controllers/posts_controller_test.rb):
         - [LikesControllerTest](https://github.com/xao0isb/ror-blog-project/tree/main/test/controllers/posts/likes_controller_test.rb)
         - [CommentsControllerTest](https://github.com/xao0isb/ror-blog-project/tree/main/test/controllers/posts/comments_controller_test.rb)
+    - [MyPostsControllerTest](https://github.com/xao0isb/ror-blog-project/tree/main/test/controllers/my/posts_controller_test.rb):
 - [Фикстуры](https://github.com/xao0isb/ror-blog-project/tree/main/test/fixtures)
 
 ### [Сиды](https://github.com/xao0isb/ror-blog-project/tree/main/db/seeds/development):
